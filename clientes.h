@@ -10,8 +10,8 @@ typedef struct cliente
 } Cliente;
 
 void adicionarCliente(Cliente& cli);
-void modificar(Cliente& &cli);
-void excluir(Cliente& &cli);
-void visualizar(Cliente& &cli);
+void modificar(Cliente& cli);
+void excluir(Cliente& cli);
+void visualizar(Cliente& cli);
 
 #endif
