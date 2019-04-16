@@ -1,34 +1,21 @@
-#include "clientes.h"
 #include <iostream>
 #include <string>
-#include <list>
+#include "clientes.h"
 
 using namespace std;
-
-struct cliente
-{
-  int codigo;
-  string nome;
-  int idade;
-};
-
 //o ideal seria tulizar uma lista de ponteiros
 
-void adicionarCliente(list<cliente> list)
+void adicionarCliente(Cliente& cli)
 {
-  // cliente cli;
-  //
-  // cout << "Cadastro de Cliente" << endl;
-  //
-  // cout << "Nome: ";
-  // cin >> cli.nome;
-  // cout << endl;
-  //
-  // cout << "Idade: ";
-  // cin >> cli.idade;
-  // cout << endl;
-  //
-  // cliente.push_back(c);
-  cout << "Chego";
+
+  cout << "Cadastro de Cliente" << endl;
+
+  cout << "Nome: ";
+  cin >> cli.nome;
+
+  cout << "Idade: ";
+  cin >> cli.idade;
 
 }
+
+//g++ -o ex clientes.cpp main.cpp

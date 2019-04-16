@@ -1,14 +1,17 @@
-#include <list>
-#include <string>
 
-using namespace std;
+#ifndef CLIENTES_H
+#define CLIENTES_H
 
-#ifndef CLIENTES_H_INCLUDED
-#define CLIENTES_H_INCLUDED
+typedef struct cliente
+{
+  int codigo;
+  std::string nome;
+  int idade;
+} Cliente;
 
-void adicionarCliente(list<cliente> list);
-// void modificar(list<cliente> &cliente);
-// void excluir(list<cliente> &cliente);
-// void visualizar(list<cliente> &cliente);
+void adicionarCliente(Cliente& cli);
+void modificar(Cliente& &cli);
+void excluir(Cliente& &cli);
+void visualizar(Cliente& &cli);
 
 #endif
