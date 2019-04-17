@@ -2,10 +2,12 @@
 #include <string>
 #include <list>
 #include "clientes.h"
+#include "acervo.h"
 
 using namespace std;
 
 list<Cliente> clientes;
+list<Acervo> listAcervo;
 
 void showMenu()
 {
@@ -47,9 +49,22 @@ void showMenu()
         listarCliente(clientes);
       }
 
-    }else if(op == '3'){
+    }else if(op == '3'){ // Opcao do acervo
+      op = printMenuAcervo();
 
-    }else if(op == '0'){
+      if(op == '1'){ // Adicionar acervo
+        adicionarAcervo(listAcervo);
+      }else if (op == '2'){ // Alterar acervo
+
+      }else if (op == '3'){ // Remover acervo
+
+      }else if (op == '4'){ // Visualizar acervo
+
+      }else if (op == '5'){ // Listar acervo
+        listarAcervo(listAcervo);
+      }
+
+    }else if(op == '0'){ // encerrar programa
       cont = 0;
     }
 
