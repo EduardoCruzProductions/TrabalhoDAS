@@ -40,7 +40,7 @@ void showMenu()
       }else if (op == '2'){ // Alterar cliente
 
       }else if (op == '3'){ // Remover cliente
-
+        excluirCliente(clientes);
       }else if (op == '4'){ // Visualizar cliente
         visualizarCliente(clientes);
       }else if (op == '5'){ // Listar cliente

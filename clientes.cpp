@@ -4,7 +4,8 @@
 using namespace std;
 //o ideal seria tulizar uma lista de ponteiros
 
-char printMenuCliente(){
+char printMenuCliente()
+{
   char op;
   while(op != '0' &&
     op != '1' &&
@@ -44,9 +45,11 @@ void adicionarCliente(list<Cliente>& listCliente)
   cout << "Cadastro de Cliente" << endl;
 
   cout << "Nome: ";
-  cin >> cli.nome;
+  cin.ignore(); //limpa o caractere de nova linha do buffer
+  getline(cin,cli.nome); //captura a informação de entrada até a quebra de linha
 
   cout << "Idade: ";
+  cin.ignore();
   cin >> cli.idade;
 
   cli.codigo = gerarCodigo(listCliente);
@@ -90,5 +93,25 @@ void visualizarCliente(list<Cliente>& listCliente)
 
 }
 
-//g++ -o ex clientes.cpp main.cpp
+void excluirCliente(list<Cliente>& listCliente)
+{
+
+  int codigo;
+  list<Cliente>::iterator it;
+
+  cout << "Informe o código do cliente: ";
+  cin >> codigo;
+  cout << endl;
+
+  for(it = listCliente.begin(); it != listCliente.end(); it++){
+    if(it->codigo == codigo){
+      listCliente.erase(it);
+      break;
+    }
+  }
+
+  cout << "Cliente removido!" << endl;
+
+}
+
 //buscar por makefile implicit roles

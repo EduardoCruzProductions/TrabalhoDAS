@@ -19,7 +19,7 @@ int gerarCodigo(list<Cliente>& listCliente);
 void adicionarCliente(list<Cliente>& listCliente);
 void listarCliente(list<Cliente>& listCliente);
 // void modificar(Cliente& cli);
-// void excluir(Cliente& cli);
+void excluirCliente(list<Cliente>& listCliente);
 void visualizarCliente(list<Cliente>& listCliente);
 
 #endif
