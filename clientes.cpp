@@ -135,7 +135,7 @@ void alterarCliente(list<Cliente>& listCliente)
 
       while(op != '0'){
 
-        cout << " -> Menu de alterações" << endl;0
+        cout << " -> Menu de alterações" << endl;
         cout << "Selecione uma das opções abaixo:" << endl;
         cout << "1 - Alterar nome" << endl;
         cout << "2 - Alterar idade" << endl;
