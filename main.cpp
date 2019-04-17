@@ -42,7 +42,7 @@ void showMenu()
       }else if (op == '3'){ // Remover cliente
 
       }else if (op == '4'){ // Visualizar cliente
-
+        visualizarCliente(clientes);
       }else if (op == '5'){ // Listar cliente
         listarCliente(clientes);
       }

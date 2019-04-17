@@ -15,10 +15,11 @@ typedef struct cliente
 } Cliente;
 
 char printMenuCliente();
+int gerarCodigo(list<Cliente>& listCliente);
 void adicionarCliente(list<Cliente>& listCliente);
 void listarCliente(list<Cliente>& listCliente);
 // void modificar(Cliente& cli);
 // void excluir(Cliente& cli);
-// void visualizar(Cliente& cli);
+void visualizarCliente(list<Cliente>& listCliente);
 
 #endif

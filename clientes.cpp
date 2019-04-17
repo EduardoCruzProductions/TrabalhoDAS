@@ -25,6 +25,17 @@ char printMenuCliente(){
   return op;
 }
 
+int gerarCodigo(list<Cliente>& listCliente)
+{
+  if(listCliente.size() == 0) return 1;
+  list<Cliente>::iterator it;
+  int maior = 0;
+  for(it = listCliente.begin(); it != listCliente.end(); it++){
+    if(it->codigo > maior)maior = it->codigo;
+  }
+  return maior+1;
+}
+
 void adicionarCliente(list<Cliente>& listCliente)
 {
 
@@ -37,6 +48,8 @@ void adicionarCliente(list<Cliente>& listCliente)
 
   cout << "Idade: ";
   cin >> cli.idade;
+
+  cli.codigo = gerarCodigo(listCliente);
 
   listCliente.push_back(cli);
 
@@ -54,6 +67,26 @@ void listarCliente(list<Cliente>& listCliente)
     << it->nome << " - "
     << it->idade
     << endl;
+
+}
+
+void visualizarCliente(list<Cliente>& listCliente)
+{
+  int codigo;
+  list<Cliente>::iterator it;
+
+  cout << "Informe o código do cliente: ";
+  cin >> codigo;
+  cout << endl;
+
+  for(it = listCliente.begin(); it != listCliente.end(); it++){
+    if(it->codigo == codigo){
+      cout << it->codigo << " - "
+           << it->nome << " - "
+           << it->idade << endl;
+      break;
+    }
+  }
 
 }
 
