@@ -114,4 +114,58 @@ void excluirCliente(list<Cliente>& listCliente)
 
 }
 
+void alterarCliente(list<Cliente>& listCliente)
+{
+
+  int codigo;
+  char op;
+  list<Cliente>::iterator it;
+
+  cout << "Informe o código do cliente: ";
+  cin >> codigo;
+  cout << endl;
+
+  for(it = listCliente.begin(); it != listCliente.end(); it++){
+
+    if(it->codigo == codigo){
+
+      cout << it->codigo << " - "
+           << it->nome << " - "
+           << it->idade << endl;
+
+      while(op != '0'){
+
+        cout << " -> Menu de alterações" << endl;
+        cout << "Selecione uma das opções abaixo:" << endl;
+        cout << "1 - Alterar nome" << endl;
+        cout << "2 - Alterar idade" << endl;
+        cout << "0 - Finalizar alteração" << endl;
+        cin >> op;
+
+        if(op == '1'){
+
+          cout << "Novo nome: ";
+          cin.ignore(); //limpa o caractere de nova linha do buffer
+          getline(cin,it->nome);
+
+        }else if(op == '2'){
+
+          cout << "Nova idade: ";
+          cin.ignore();
+          cin >> it->idade;
+
+        }else if(op == '0'){
+          cout << "Alteração concluída!" << endl;
+        }
+
+      }
+
+      break;
+
+    }
+
+  }
+
+}
+
 //buscar por makefile implicit roles

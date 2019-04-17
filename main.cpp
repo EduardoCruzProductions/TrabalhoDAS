@@ -38,7 +38,7 @@ void showMenu()
       if(op == '1'){ // Adicionar cliente
         adicionarCliente(clientes);
       }else if (op == '2'){ // Alterar cliente
-
+        alterarCliente(clientes);
       }else if (op == '3'){ // Remover cliente
         excluirCliente(clientes);
       }else if (op == '4'){ // Visualizar cliente
