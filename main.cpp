@@ -34,7 +34,8 @@ void showMenu()
 
     if(op == '1'){ // Opcao da Locacao
 
-      op = printMenuLocacao();
+      op = 'e';
+      printMenuLocacao(&op);
 
       if(op == '1'){ // Realizar locacao
 
