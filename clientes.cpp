@@ -155,6 +155,9 @@ void alterarCliente(list<Cliente>& listCliente)
 
         }else if(op == '0'){
           cout << "Alteração concluída!" << endl;
+          cout << it->codigo << " - "
+               << it->nome << " - "
+               << it->idade << endl;
         }
 
       }
