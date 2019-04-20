@@ -18,5 +18,8 @@ char printMenuAcervo();
 int gerarCodigo(std::list<Acervo>& listAcervo);
 void adicionarAcervo(std::list<Acervo>& listAcervo);
 void listarAcervo(std::list<Acervo>& listAcervo);
+void visualizarAcervo(std::list<Acervo>& listAcervo);
+void excluirAcervo(std::list<Acervo>& listAcervo);
+void alterarAcervo(std::list<Acervo>& listAcervo);
 
 #endif

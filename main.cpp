@@ -55,11 +55,11 @@ void showMenu()
       if(op == '1'){ // Adicionar acervo
         adicionarAcervo(listAcervo);
       }else if (op == '2'){ // Alterar acervo
-
+        alterarAcervo(listAcervo);
       }else if (op == '3'){ // Remover acervo
-
+        excluirAcervo(listAcervo);
       }else if (op == '4'){ // Visualizar acervo
-
+        visualizarAcervo(listAcervo);
       }else if (op == '5'){ // Listar acervo
         listarAcervo(listAcervo);
       }

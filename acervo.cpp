@@ -27,7 +27,7 @@ char printMenuAcervo()
 
 int gerarCodigo(list<Acervo>& listAcervo)
 {
-  if(listAcervo.size() == 1) return 1;
+  if(listAcervo.size() == 0) return 1;
   list<Acervo>::iterator it;
   int maior = 0;
   for(it = listAcervo.begin(); it != listAcervo.end(); it++){
@@ -81,5 +81,115 @@ void listarAcervo(list<Acervo>& listAcervo)
     << it->valorLocacao << " - "
     << (it->status ? "Alugado" : "Disponível")
     << endl;
+
+}
+
+void visualizarAcervo(list<Acervo>& listAcervo)
+{
+  int codigo;
+  list<Acervo>::iterator it;
+
+  cout << "Informe o código do item: ";
+  cin >> codigo;
+  cout << endl;
+
+  for(it = listAcervo.begin(); it != listAcervo.end(); it++){
+    if(it->codigo == codigo){
+      cout << it->codigo << " - "
+      << it->titulo << " - "
+      << it->genero << " - "
+      << it->valorLocacao << " - "
+      << (it->status ? "Alugado" : "Disponível")
+      << endl;
+      break;
+    }
+  }
+
+}
+
+void excluirAcervo(list<Acervo>& listAcervo)
+{
+  int codigo;
+  list<Acervo>::iterator it;
+
+  cout << "Informe o código do item: ";
+  cin >> codigo;
+  cout << endl;
+
+  for(it = listAcervo.begin(); it != listAcervo.end(); it++){
+    if(it->codigo == codigo){
+      listAcervo.erase(it);
+      break;
+    }
+  }
+
+  cout << "Item removido!" << endl;
+
+}
+
+void alterarAcervo(list<Acervo>& listAcervo)
+{
+
+  int codigo;
+  char op;
+  list<Acervo>::iterator it;
+
+  cout << "Informe o código do item: ";
+  cin >> codigo;
+  cout << endl;
+
+  for(it = listAcervo.begin(); it != listAcervo.end(); it++){
+
+    if(it->codigo == codigo){
+
+      cout << it->codigo << " - "
+      << it->titulo << " - "
+      << it->genero << " - "
+      << it->valorLocacao << " - "
+      << (it->status ? "Alugado" : "Disponível")
+      << endl;
+
+      while(op != '0'){
+        cout << " -> Menu de alterações" << endl;
+        cout << "Selecione uma das opções abaixo:" << endl;
+        cout << "1 - Alterar título" << endl;
+        cout << "2 - Alterar gênero" << endl;
+        cout << "3 - Alterar valor de locação" << endl;
+        cout << "0 - Finalizar alteração" << endl;
+        cin >> op;
+
+        if(op == '1'){
+
+          cout << "Novo título: ";
+          cin.ignore();
+          getline(cin,it->titulo);
+
+        }else if(op == '2'){
+
+          cout << "Novo gênero: ";
+          cin.ignore();
+          getline(cin, it->genero);
+
+        }else if(op == '3'){
+
+          cout << "Novo valor de locação: ";
+          cin.ignore();
+          cin >> it->valorLocacao;
+
+        }else if(op == '0'){
+          cout << "Alteração concluída!" << endl;
+          cout << it->codigo << " - "
+          << it->titulo << " - "
+          << it->genero << " - "
+          << it->valorLocacao << " - "
+          << (it->status ? "Alugado" : "Disponível")
+          << endl;
+        }
+
+      }
+
+    }
+
+  }
 
 }
