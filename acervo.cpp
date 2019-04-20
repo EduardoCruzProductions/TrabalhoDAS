@@ -191,3 +191,35 @@ void alterarAcervo(list<Acervo>& listAcervo)
   }
 
 }
+
+Acervo* buscarItemDisponivel(list<Acervo>& listAcervo, int& codigo)
+{
+  Acervo *item = 0x00;
+  list<Acervo>::iterator it;
+  for(it = listAcervo.begin(); it != listAcervo.end(); it++){
+    if(it->codigo == codigo && it->status != 1){
+      item = &(*it);
+      break;
+    }
+  }
+  return item;
+}
+
+void listarAcervoDisponivel(list<Acervo>& listAcervo)
+{
+  list<Acervo>::iterator it;
+
+  cout << "--------------- Acervo disponível ---------------" << endl;
+
+  for(it = listAcervo.begin(); it != listAcervo.end(); it++){
+    if(it->status == 0){
+      cout << it->codigo << " - "
+      << it->titulo << " - "
+      << it->genero << " - "
+      << it->valorLocacao << " - "
+      << (it->status ? "Alugado" : "Disponível")
+      << endl;
+    }
+  }
+
+}

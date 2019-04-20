@@ -19,5 +19,6 @@ void listarCliente(std::list<Cliente>& listCliente);
 void alterarCliente(std::list<Cliente>& listCliente);
 void excluirCliente(std::list<Cliente>& listCliente);
 void visualizarCliente(std::list<Cliente>& listCliente);
+Cliente* buscarCliente(std::list<Cliente>& listCliente, int& codigo);
 
 #endif

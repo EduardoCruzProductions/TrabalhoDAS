@@ -21,5 +21,7 @@ void listarAcervo(std::list<Acervo>& listAcervo);
 void visualizarAcervo(std::list<Acervo>& listAcervo);
 void excluirAcervo(std::list<Acervo>& listAcervo);
 void alterarAcervo(std::list<Acervo>& listAcervo);
+Acervo* buscarItemDisponivel(std::list<Acervo>& listAcervo, int& codigo);
+void listarAcervoDisponivel(std::list<Acervo>& listAcervo);
 
 #endif

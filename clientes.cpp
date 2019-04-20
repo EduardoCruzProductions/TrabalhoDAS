@@ -168,4 +168,17 @@ void alterarCliente(list<Cliente>& listCliente)
 
 }
 
+Cliente* buscarCliente(list<Cliente>& listCliente, int& codigo)
+{
+  Cliente *cli = 0x00;
+  list<Cliente>::iterator it;
+  for(it = listCliente.begin(); it != listCliente.end(); it++){
+    if(it->codigo == codigo){
+      cli = &(*it);
+      break;
+    }
+  }
+  return cli;
+}
+
 //buscar por makefile implicit roles

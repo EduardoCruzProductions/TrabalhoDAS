@@ -14,5 +14,8 @@ typedef struct locacao
 } Locacao;
 
 void printMenuLocacao(char *op);
+int gerarCodigoLocacao(std::list<Locacao>& listLocacao);
+void realizarLocacao(std::list<Locacao>& listLocacao, std::list<Acervo>& listAcervo, std::list<Cliente>& clientes);
+void listarLocacoes(std::list<Locacao>& listLocacao);
 
 #endif

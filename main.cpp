@@ -9,6 +9,7 @@ using namespace std;
 
 list<Cliente> clientes;
 list<Acervo> listAcervo;
+list<Locacao> listLocacao;
 
 void showMenu()
 {
@@ -38,11 +39,11 @@ void showMenu()
       printMenuLocacao(&op);
 
       if(op == '1'){ // Realizar locacao
-
+        realizarLocacao(listLocacao, listAcervo, clientes);
       }else if (op == '2'){ // Realizar devolucao
 
       }else if (op == '3'){ // Listar locacoes
-
+        listarLocacoes(listLocacao);
       }else if (op == '4'){ // Listar midias disponíveis
 
       }else if (op == '5'){ // mostrar faturamento
