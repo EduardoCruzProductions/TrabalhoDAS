@@ -12,7 +12,7 @@ typedef struct cliente
   int idade;
 } Cliente;
 
-char printMenuCliente();
+void printMenuCliente(char *op);
 int gerarCodigo(std::list<Cliente>& listCliente);
 void adicionarCliente(std::list<Cliente>& listCliente);
 void listarCliente(std::list<Cliente>& listCliente);

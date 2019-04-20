@@ -3,6 +3,7 @@
 #include <list>
 #include "clientes.h"
 #include "acervo.h"
+#include "locacao.h"
 
 using namespace std;
 
@@ -33,9 +34,24 @@ void showMenu()
 
     if(op == '1'){ // Opcao da Locacao
 
+      op = printMenuLocacao();
+
+      if(op == '1'){ // Realizar locacao
+
+      }else if (op == '2'){ // Realizar devolucao
+
+      }else if (op == '3'){ // Listar locacoes
+
+      }else if (op == '4'){ // Listar midias disponíveis
+
+      }else if (op == '5'){ // mostrar faturamento
+
+      }
+
     }else if(op == '2'){ // Opcao dos clientes
 
-      op = printMenuCliente();
+      op = 'e';
+      printMenuCliente(&op);
 
       if(op == '1'){ // Adicionar cliente
         adicionarCliente(clientes);
@@ -50,7 +66,9 @@ void showMenu()
       }
 
     }else if(op == '3'){ // Opcao do acervo
-      op = printMenuAcervo();
+
+      op = 'e';
+      printMenuAcervo(&op);
 
       if(op == '1'){ // Adicionar acervo
         adicionarAcervo(listAcervo);

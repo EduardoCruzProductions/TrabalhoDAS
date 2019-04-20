@@ -14,7 +14,7 @@ typedef struct acervo
   int status;
 } Acervo;
 
-char printMenuAcervo();
+void printMenuAcervo(char *op);
 int gerarCodigo(std::list<Acervo>& listAcervo);
 void adicionarAcervo(std::list<Acervo>& listAcervo);
 void listarAcervo(std::list<Acervo>& listAcervo);

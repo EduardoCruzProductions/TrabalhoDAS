@@ -3,15 +3,14 @@
 
 using namespace std;
 
-char printMenuAcervo()
+void printMenuAcervo(char *op)
 {
-  char op;
-  while(op != '0' &&
-    op != '1' &&
-    op != '2' &&
-    op != '3' &&
-    op != '4' &&
-    op != '5'){
+  while(*op != '0' &&
+    *op != '1' &&
+    *op != '2' &&
+    *op != '3' &&
+    *op != '4' &&
+    *op != '5'){
     cout << "" << endl;
     cout << " -> Menu acervo" << endl;
     cout << "0 - Voltar" << endl;
@@ -20,9 +19,8 @@ char printMenuAcervo()
     cout << "3 - Remover acervo" << endl;
     cout << "4 - Visualizar acervo" << endl;
     cout << "5 - Listar acervo" << endl;
-    cin >> op;
+    cin >> *op;
   }
-  return op;
 }
 
 int gerarCodigo(list<Acervo>& listAcervo)
