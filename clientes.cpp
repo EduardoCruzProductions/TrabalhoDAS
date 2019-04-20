@@ -49,7 +49,6 @@ void adicionarCliente(list<Cliente>& listCliente)
   getline(cin,cli.nome); //captura a informação de entrada até a quebra de linha
 
   cout << "Idade: ";
-  cin.ignore();
   cin >> cli.idade;
 
   cli.codigo = gerarCodigo(listCliente);

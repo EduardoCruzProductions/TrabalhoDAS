@@ -51,8 +51,7 @@ void adicionarAcervo(list<Acervo>& listAcervo)
     getline(cin,ac.titulo);
 
     cout << "Gênero: ";
-    cin.ignore();
-    getline(cin,ac.genero); // aqui tem um bug q come a primeira letra
+    getline(cin,ac.genero);
 
     cout << "Valor de Locação: ";
     cin >> ac.valorLocacao;
@@ -62,7 +61,7 @@ void adicionarAcervo(list<Acervo>& listAcervo)
     listAcervo.push_back(ac);
 
     cout << "" << endl;
-    cout << "Deseja continuar adicionando? (s/n)";
+    cout << "Deseja continuar adicionando? (s/n) ";
     cin >> op;
 
   }while(op != 'n');
