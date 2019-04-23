@@ -9,7 +9,7 @@ typedef struct locacao
 {
   int codigo;
   Cliente *cliente;
-  Acervo *item;
+  std::list<Acervo*> itens;
   double valorLocacao;
 } Locacao;
 
