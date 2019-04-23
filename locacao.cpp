@@ -239,7 +239,7 @@ void realizarDevolucao(list<Locacao>& listLocacao)
       cin >> codigoLocacao;
 
       for(it = listLocacao.begin(); it != listLocacao.end(); it++){
-        if(it->cliente->codigo == codigo){
+        if(it->codigo == codigo){
             locacao = &(*it);
             runcount++;
         }
