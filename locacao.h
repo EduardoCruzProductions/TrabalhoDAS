@@ -17,5 +17,8 @@ void printMenuLocacao(char *op);
 int gerarCodigoLocacao(std::list<Locacao>& listLocacao);
 void realizarLocacao(std::list<Locacao>& listLocacao, std::list<Acervo>& listAcervo, std::list<Cliente>& clientes);
 void listarLocacoes(std::list<Locacao>& listLocacao);
+void realizarDevolucao(std::list<Locacao>& listLocacao);
+void listarClientesLocacao(std::list<Locacao>& listLocacao);
+void mostrarFaturamento();
 
 #endif

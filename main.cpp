@@ -41,13 +41,13 @@ void showMenu()
       if(op == '1'){ // Realizar locacao
         realizarLocacao(listLocacao, listAcervo, clientes);
       }else if (op == '2'){ // Realizar devolucao
-
+        realizarDevolucao(listLocacao);
       }else if (op == '3'){ // Listar locacoes
         listarLocacoes(listLocacao);
       }else if (op == '4'){ // Listar midias disponíveis
-
+        listarAcervoDisponivel(listAcervo);
       }else if (op == '5'){ // mostrar faturamento
-
+        mostrarFaturamento();
       }
 
     }else if(op == '2'){ // Opcao dos clientes

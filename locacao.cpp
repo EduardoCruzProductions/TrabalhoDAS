@@ -3,6 +3,8 @@
 
 using namespace std;
 
+double faturamento = 0;
+
 void printMenuLocacao(char *op)
 {
   while(*op != '0' &&
@@ -21,6 +23,10 @@ void printMenuLocacao(char *op)
     cout << "5 - Mostrar faturamento" << endl;
     cin >> *op;
   }
+}
+
+void mostrarFaturamento(){
+  cout << "Faturamento atual: " << faturamento << "R$" << endl;
 }
 
 int gerarCodigoLocacao(list<Locacao>& listLocacao)
@@ -96,9 +102,9 @@ void realizarLocacao(list<Locacao>& listLocacao, list<Acervo>& listAcervo, list<
           cout << "" << endl;
         }
       }else{
-        locacao.itens.push_back(item);
         locacao.valorLocacao += item->valorLocacao;
         item->status = 1;
+        locacao.itens.push_back(item);
         pass = 1;
       }
 
@@ -150,4 +156,189 @@ void listarLocacoes(list<Locacao>& listLocacao)
       << endl;
     }
   }
+}
+
+void listarClientesLocacao(list<Locacao>& listLocacao)
+{
+  list<Locacao>::iterator it;
+  cout << "--------------- Clientes que realizaram locações ---------------" << endl;
+  for(it = listLocacao.begin(); it != listLocacao.end(); it++)
+    cout << it->cliente->codigo << " - "
+    << it->cliente->nome << " - "
+    << it->cliente->idade
+    << endl;
+}
+
+void realizarDevolucao(list<Locacao>& listLocacao)
+{
+
+  int runcount = 0, pass = 0, codigo = 0, codigoLocacao = 0;
+  list<Locacao>::iterator it;
+  list<Acervo*>::iterator itItem;
+  char op = 'e';
+  Locacao *locacao;
+
+  //Exibindo usuários possiveis
+  do{
+
+    cout << "Informe o código do cliente: ";
+    cin >> codigo;
+
+    cout << "--------------- Locações realizadas pelo cliente ---------------" << endl;
+    for(it = listLocacao.begin(); it != listLocacao.end(); it++){
+      if(it->cliente->codigo == codigo){
+
+          cout << it->codigo << " - "
+          << it->cliente->nome << " - "
+          << it->valorLocacao
+          << endl;
+
+          for(itItem = it->itens.begin(); itItem != it->itens.end(); itItem++){
+            cout << "   "
+            << (*itItem)->codigo << " - "
+            << (*itItem)->titulo << " - "
+            << (*itItem)->genero << " - "
+            << (*itItem)->valorLocacao
+            << endl;
+          }
+          runcount++;
+      }
+    }
+
+    if(runcount == 0){
+      cout << "Este cliente não possui locações ou este código não existe!" << endl;
+      do{
+        cout << "Deseja listar os clientes que realizaram locações? (s/n) ";
+        cin >> op;
+      }while(op != 's' && op != 'n');
+      if(op == 's'){
+        listarClientesLocacao(listLocacao);
+        cout << "" << endl;
+      }
+    }else{
+      pass = 1;
+    }
+
+  }while(!pass);
+
+  //definindo a locacao usada para a devolucao
+  if(runcount == 1){
+    for(it = listLocacao.begin(); it != listLocacao.end(); it++){
+      if(it->cliente->codigo == codigo){
+        locacao = &(*it);
+      }
+    }
+  }else{
+
+    pass = 0;
+
+    do{
+      runcount = 0;
+      op = 'e';
+      cout << "Informe o código da locação: ";
+      cin >> codigoLocacao;
+
+      for(it = listLocacao.begin(); it != listLocacao.end(); it++){
+        if(it->cliente->codigo == codigo){
+            locacao = &(*it);
+            runcount++;
+        }
+      }
+
+      if(runcount != 1){
+        do{
+          cout << "Código não encontrado! Deseja listar as locações disponíveis? (s/n) ";
+          cin >> op;
+        }while(op != 's' && op != 'n');
+        if(op == 's'){
+          cout << "--------------- Locações realizadas pelo cliente ---------------" << endl;
+          for(it = listLocacao.begin(); it != listLocacao.end(); it++){
+            if(it->cliente->codigo == codigo){
+
+                cout << it->codigo << " - "
+                << it->cliente->nome << " - "
+                << it->valorLocacao
+                << endl;
+
+                for(itItem = it->itens.begin(); itItem != it->itens.end(); itItem++){
+                  cout << "   "
+                  << (*itItem)->codigo << " - "
+                  << (*itItem)->titulo << " - "
+                  << (*itItem)->genero << " - "
+                  << (*itItem)->valorLocacao
+                  << endl;
+                }
+                runcount++;
+            }
+          }
+          cout << "" << endl;
+        }
+      }else{
+          pass = 1;
+      }
+
+    }while(!pass);
+
+  }
+
+  cout << "" << endl;
+
+  //devolvendo itens
+  cout << "Locação selecionada -->" << endl;
+
+  cout << locacao->codigo << " - "
+  << locacao->cliente->nome << " - "
+  << locacao->valorLocacao
+  << endl;
+
+  for(itItem = locacao->itens.begin(); itItem != locacao->itens.begin(); itItem++){
+    cout << "   "
+    << (*itItem)->codigo << " - "
+    << (*itItem)->titulo << " - "
+    << (*itItem)->genero << " - "
+    << (*itItem)->valorLocacao
+    << endl;
+  }
+
+  codigo = 0;
+  pass = 0;
+  op = 'e';
+
+  do{
+
+    cout << "Informe o código do item para devolver: ";
+    cin >> codigo;
+
+    for(itItem = locacao->itens.begin(); itItem != locacao->itens.end(); itItem++){
+      if((*itItem)->codigo == codigo){
+        (*itItem)->status = 0;
+        faturamento += (*itItem)->valorLocacao;
+        locacao->itens.erase(itItem);
+        break;
+      }
+    }
+
+    cout << "Deseja devolver mais um item? (s/n) ";
+    cin >> op;
+
+    if(op != 's'){
+      pass = 1;
+    }
+
+  }while(!pass);
+
+  //Verificacao de finalizacao da devolucao
+
+  if(locacao->itens.size() == 0){
+    for(it = listLocacao.begin(); it != listLocacao.end(); it++){
+      if(it->codigo == locacao->codigo){
+        listLocacao.erase(it);
+        break;
+      }
+    }
+  }
+
+  cout << "" << endl;
+  cout << "Devolução concluída! ";
+
 }
